@@ -12,9 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { events: [] };
-    this.state = {
-      vss2Value: []
-    }
+    this.state = { vss2Value: [] };
     this.logEvent = this.logEvent.bind(this);
     this.onEditingStart = this.logEvent.bind(this, 'EditingStart');
     this.onInitNewRow = this.logEvent.bind(this, 'InitNewRow');
@@ -24,9 +22,9 @@ class App extends React.Component {
     this.onRowUpdated = this.logEvent.bind(this, 'RowUpdated');
     this.onRowRemoving = this.logEvent.bind(this, 'RowRemoving');
     this.onRowRemoved = this.logEvent.bind(this, 'RowRemoved');
-
     this.clearEvents = this.clearEvents.bind(this);
   }
+
 
   logEvent(eventName) {
     this.setState((state) => {
@@ -40,9 +38,9 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch(`http://192.168.43.165:8000/capability`)
-      .then(res => console.log(res.json()))
+      .then(res => res.json())
       .then((vss2Value) => {
-        this.setState({ vss2Value: vss2Value });
+        this.setState({ vss2Value: vss2Value.data });
       })
   }
 
@@ -55,7 +53,7 @@ class App extends React.Component {
         <h2>{`Test Simulator App`}</h2>
         <DataGrid
           id="gridContainer"
-          //dataSource={vss2Data}
+          dataSource={vss2Value}
           remoteOperations={true}
           // dataSource={dataSourceOptions}
           allowColumnReordering={true}
