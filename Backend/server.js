@@ -50,7 +50,7 @@ app.get("/value", (req, res, next) => {
 });
 
 app.get("/capability", (req, res, next) => {
-    var sql = "select Vss2Capability.signal,Description,Type,DataType,Unit,Min,Max,Enum,id,status from Vss2Capability  INNER JOIN Vss2Value  ON Vss2Capability.Signal = Vss2Value.Signal WHERE Vss2Value.status = 'enabled'";
+    var sql = "select Vss2Capability.signal,Description,Type,DataType,Unit,Min,Max,Enum,id,value,status from Vss2Capability  INNER JOIN Vss2Value  ON Vss2Capability.Signal = Vss2Value.Signal WHERE Vss2Value.status = 'enabled'";
     var params = []
     db.all(sql, params, (err, rows) => {
         if (err) {

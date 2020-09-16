@@ -1,12 +1,6 @@
 import React from 'react';
-//import Button from 'devextreme-react/button'; //lookup
 import DataGrid, { Column, Editing, Paging } from 'devextreme-react/data-grid';
-// import axios from 'axios';
 
-// import { dataSourceOptions } from './data.js';
-import 'devextreme/data/odata/store';
-import ODataStore from 'devextreme/data/odata/store';
-import DataSource from 'devextreme/data/data_source';
 
 class App extends React.Component {
   constructor(props) {
@@ -84,6 +78,7 @@ class App extends React.Component {
           <Column dataField="Max" caption="Maximum" />
           <Column dataField="Enum" />
           <Column dataField="id" caption="ID" />
+          <Column dataField="value" caption="Value" />
           <Column dataField="status" caption="Status" />
 
         </DataGrid>
