@@ -5,7 +5,6 @@ import 'devextreme-react/text-area';
 import CustomStore from 'devextreme/data/custom_store';
 // import { formatDate } from 'devextreme/localization';
 import 'whatwg-fetch';
-// const REFRESH_MODES = ['full', 'reshape', 'repaint'];
 
 const URL = "http://127.0.0.1:8000";
 
@@ -42,12 +41,8 @@ class App extends React.Component {
           key: key
         })
       }),
-
       requests: [],
-      refreshMode: 'reshape'
     };
-
-    this.handleRefreshModeChange = this.handleRefreshModeChange.bind(this);
   }
 
   sendRequest(url, method, data) {
@@ -93,8 +88,6 @@ class App extends React.Component {
   //   }).join(' ');
 
   //   const request = [method, url.slice(URL.length), args].join(' ');
-
-
   // }
 
   handleRefreshModeChange(e) {
@@ -108,15 +101,12 @@ class App extends React.Component {
       // <React.Fragment>
       //   <form action="localhost:8000/entry" method="post">
       //     <h2 style={{ color: "red" }}>{`Test Simulator App`}</h2>
-
       //     <DataGrid
       //       id="gridContainer"
       //       dataSource={vss2Value}
       //       remoteOperations={true}
       //       // dataSource={dataSourceOptions}
-      //       allowColumnReordering={true}
       //       
-      //       <Paging enabled={true} />
       //       <Editing
       //         mode="form"
       //         allowUpdating={true}
@@ -134,15 +124,13 @@ class App extends React.Component {
       //       <Column dataField="id" caption="ID" />
       //       <Column dataField="value" caption="Value" />
       //       <Column dataField="status" caption="Status" />
-
       //     </DataGrid>
-
       //   </form>
       // </React.Fragment>
 
       <React.Fragment>
+        <h2 style={{ color: "red" }}>{`Test Simulator App`}</h2>
         <DataGrid
-          id="grid"
           showBorders={true}
           dataSource={vss2Value}
           repaintChangesOnly={true}
