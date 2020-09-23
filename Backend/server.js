@@ -17,7 +17,7 @@ app.listen(PORT, () => {
 });
 // Root endpoint
 app.get("/", (req, res, next) => {
-    res.json({ "message": "Ok" })
+    return res.json({ "message": "Ok" })
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,7 +28,7 @@ app.get("/testsimulator", (req, res, next) => {
     var params = []
     db.all(sql, params, (err, rows) => {
         if (err) {
-            res.status(400).json({ "error": err.message });
+            return res.status(400).json({ "error": err.message });
             return;
         }
         res.json({
@@ -42,7 +42,7 @@ app.get("/value", (req, res, next) => {
     var params = []
     db.all(sql, params, (err, rows) => {
         if (err) {
-            res.status(400).json({ "error": err.message });
+            return res.status(400).json({ "error": err.message });
             return;
         }
         res.json({
@@ -56,7 +56,7 @@ app.get("/capability", (req, res, next) => {
     var params = []
     db.all(sql, params, (err, rows) => {
         if (err) {
-            res.status(400).json({ "error": err.message });
+            return res.status(400).json({ "error": err.message });
             return;
         }
         res.json({
@@ -107,10 +107,13 @@ app.post("/entry", urlencodedParser, (req, res) => {
 
     });
 
-    // res.writeHead(200, { "Content-Type": "text/html" });
+    //res.writeHead(200, { "Content-Type": "text/html" });
     // res.setHeader("Content-Type", "text/html");
-    // res.render(..);
-    res.end();
+    //res.end();
+
+    res.statusCode = 404;
+    //res.setHeader('Content-Type', 'text/plain');
+    res.end('Cannot ' + req.method + ' ' + req.url);
 })
 
 console.log("data inserted")

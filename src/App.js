@@ -82,13 +82,13 @@ class App extends React.Component {
     });
   }
 
-  // logRequest(method, url, data) {
-  //   const args = Object.keys(data || {}).map(function (key) {
-  //     return `${key}=${data[key]}`;
-  //   }).join(' ');
+  logRequest(method, url, data) {
+    const args = Object.keys(data || {}).map(function (key) {
+      return `${key}=${data[key]}`;
+    }).join(' ');
 
-  //   const request = [method, url.slice(URL.length), args].join(' ');
-  // }
+    const request = [method, url.slice(URL.length), args].join(' ');
+  }
 
   handleRefreshModeChange(e) {
     this.setState({ refreshMode: e.value });
